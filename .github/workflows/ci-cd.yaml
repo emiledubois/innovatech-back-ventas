@@ -29,14 +29,14 @@ jobs:
           cache: maven
 
       - name: Compilar y ejecutar tests
-        working-directory: Springboot-API-REST
+        working-directory: Springboot-API-REST-VENTAS
         run: mvn clean verify
 
       - name: Guardar JAR como artefacto
         uses: actions/upload-artifact@v4
         with:
           name: app-jar
-          path: Springboot-API-REST/target/*.jar
+          path: Springboot-API-REST-VENTAS/target/*.jar
 
   build-and-push-ecr:
     name: Build & Push ECR
@@ -63,7 +63,7 @@ jobs:
 
       - name: Build, tag y push imagen
         id: build-image
-        working-directory: Springboot-API-REST
+        working-directory: Springboot-API-REST-VENTAS
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
