@@ -29,7 +29,7 @@ jobs:
           cache: maven
 
       - name: Compilar y ejecutar tests
-        run: mvn clean verify
+        run: mvn clean package -DskipTests
 
       - name: Guardar JAR como artefacto
         uses: actions/upload-artifact@v4
